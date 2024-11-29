@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import express from 'express';
 import compression from 'compression';
 import usuarioRoutes from "./routes/usuarioRoutes"
+import reportesRoutes from "./routes/reportesRoutes"
 
 const app = express();
 
@@ -30,7 +31,7 @@ app.options('*', cors());
 
 // rutas
 app.use('/', usuarioRoutes);
-
+app.use('/', reportesRoutes);
 
 // exportando el servidor configurado
 export default app;
