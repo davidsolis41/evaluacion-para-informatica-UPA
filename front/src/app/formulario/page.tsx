@@ -49,6 +49,7 @@ function Formulario() {
     formState: { errors },
     setFocus,
     watch,
+    reset
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -63,16 +64,17 @@ function Formulario() {
       body: JSON.stringify(data),
     });
 
-    if (!response.ok) alert("Error al enviar el formulario"); // TODO:
+    if (!response.ok) alert("Error al enviar el formulario");
 
-    alert("Formulario enviado con éxito"); // TODO:
+    reset();
+    alert("Formulario enviado con éxito");
   }
 
   React.useEffect(() => {
     (async () => {
       const response = await fetch("http://localhost:3000/estadosUsuario");
       if (!response.ok) {
-        return alert("Error al cargar los estados"); // TODO:
+        return alert("Error al cargar los estados");
       }
       const data = await response.json();
       setEstados(data);
