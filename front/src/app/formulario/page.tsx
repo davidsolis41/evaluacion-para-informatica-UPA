@@ -41,11 +41,14 @@ function Formulario() {
     { id: number; titulo: string }[]
   >([]);
 
+  const [edad, setEdad] = React.useState(0);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     setFocus,
+    watch,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -75,6 +78,29 @@ function Formulario() {
       setEstados(data);
     })();
   }, []);
+
+  const fecha = watch("fecha");
+  React.useEffect(() => {
+    if (
+      fecha &&
+      /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/.test(fecha)
+    ) {
+      const [day, month, year] = fecha.split("-").map(Number);
+      const birthDate = new Date(year, month - 1, day);
+      const hoy = new Date();
+
+      let calculatedAge = hoy.getFullYear() - birthDate.getFullYear();
+
+      const birthdayThisYear = new Date(hoy.getFullYear(), month - 1, day);
+      if (hoy < birthdayThisYear) {
+        calculatedAge--;
+      }
+
+      setEdad(calculatedAge >= 0 ? calculatedAge : 0);
+    } else {
+      setEdad(0);
+    }
+  }, [fecha]);
 
   React.useEffect(() => {
     const firstError = Object.keys(errors)[0] as keyof FormData;
@@ -116,6 +142,10 @@ function Formulario() {
           {errors.fecha && (
             <p className="text-red-500">{errors.fecha.message}</p>
           )}
+        </div>
+
+        <div className="w-[90%] flex flex-col mt-4 mb-2">
+          <p>Edad: {edad} Años</p>
         </div>
 
         <div className="w-[90%] flex flex-col mt-4 mb-2">
