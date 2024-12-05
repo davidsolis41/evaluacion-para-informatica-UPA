@@ -9,7 +9,7 @@ export default function Page({ params }: { params: { reporte: string } }) {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    if(reporte != "todos" && reporte != "hoy" && reporte != "ayer"){
+    if(reporte != "todos" && reporte != "hoy" && reporte != "ayer" && reporte != "top"){
         router.push("/reportes");
         return;
     }

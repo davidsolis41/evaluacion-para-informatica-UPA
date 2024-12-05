@@ -30,16 +30,21 @@ async function obtenerReporte(id: "todos" | "hoy" | "ayer" | "top"): Promise<any
 }
 
 async function obtenerTop(client: PrismaClient){
+  let data = await client.punteo_usuario.findMany({
+    orderBy: {
+      punteo: "desc"
+    },
+    take: 3
+  });
   return await client.usuario.findMany({
     select: {
       id: true,
       nombre: true,
       telefono: true
     },
-    take: 3,
-    orderBy: {
-      punteo: {
-        _count: "asc"
+    where : {
+      id: {
+        in: data.map(d => d.idUsuario)
       }
     }
   });
