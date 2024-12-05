@@ -5,6 +5,12 @@ export default function Reportes() {
         Haz click en el Reporte deseado
       </h2>
       <section className="flex flex-col items-center border border-slate-300 rounded-lg w-[450px] py-[50px] shadow-md shadow-slate-800">
+      <a
+          href="/reportes/top"
+          className="w-[50%] flex flex-col mt-4 mb-2 py-5 transition-all duration-200 hover:scale-125 hover:bg-slate-400 border-2 border-slate-800 rounded-lg"
+        >
+          <span className="w-full text-center text-xl">Top</span>
+        </a>
         <a
           href="/reportes/todos"
           className="w-[50%] flex flex-col mt-4 mb-2 py-5 transition-all duration-200 hover:scale-125 hover:bg-slate-400 border-2 border-slate-800 rounded-lg"

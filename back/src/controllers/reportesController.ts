@@ -8,23 +8,41 @@ export default async function obtenerReportePorId(
   if (
     req.query.reporte != "todos" &&
     req.query.reporte != "hoy" &&
-    req.query.reporte != "ayer"
+    req.query.reporte != "ayer" &&
+    req.query.reporte != "top"
   ) return res.status(500).json("Ocurrio un error inesperado");
 
   let reporte = res.status(200).json(await obtenerReporte(req.query.reporte));
   return reporte;
 }
 
-async function obtenerReporte(id: "todos" | "hoy" | "ayer"): Promise<any> {
+async function obtenerReporte(id: "todos" | "hoy" | "ayer" | "top"): Promise<any> {
   const client = new PrismaClient();
   let data: any = [];
 
+  if(id == "top") data = await obtenerTop(client);
   if(id == "todos") data = await obtenerTodos(client);
   if (id == "hoy") data = await obtenerHoy(client);
   if (id == "ayer") data = await obtenerAyer(client)
 
   client.$disconnect();
   return data;
+}
+
+async function obtenerTop(client: PrismaClient){
+  return await client.usuario.findMany({
+    select: {
+      id: true,
+      nombre: true,
+      telefono: true
+    },
+    take: 3,
+    orderBy: {
+      punteo: {
+        _count: "asc"
+      }
+    }
+  });
 }
 
 async function obtenerTodos(client: PrismaClient){
