@@ -5,6 +5,7 @@ import express from 'express';
 import compression from 'compression';
 import usuarioRoutes from "./routes/usuarioRoutes"
 import reportesRoutes from "./routes/reportesRoutes"
+import punteoRoutes from './routes/punteoRoutes';
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.options('*', cors());
 // rutas
 app.use('/', usuarioRoutes);
 app.use('/', reportesRoutes);
+app.use('/', punteoRoutes);
 
 // exportando el servidor configurado
 export default app;

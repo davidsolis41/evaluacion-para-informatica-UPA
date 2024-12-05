@@ -35,6 +35,7 @@ model punteo_usuario {
   id Int @id @default(autoincrement())
   idUsuario Int
   punteo Int
+  creacion DateTime @default(now())
 
   usuario Usuario? @relation(name: "PunteoAUsuario", fields: [idUsuario], references: [id])
 }
