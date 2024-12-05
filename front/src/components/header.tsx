@@ -5,6 +5,7 @@ export default function Header() {
             <li><a href="/" className="link_header text-xl text-[#dfe5f6]">Home</a></li>
             <li><a href="/formulario" className="link_header text-xl text-[#dfe5f6]">Formulario</a></li>
             <li><a href="/reportes" className="link_header text-xl text-[#dfe5f6]">Reportes</a></li>
+            <li><a href="/punteo" className="link_header text-xl text-[#dfe5f6]">Punteo</a></li>
         </ul>
     </header>
   )

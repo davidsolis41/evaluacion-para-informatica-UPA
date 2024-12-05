@@ -15,6 +15,9 @@ export default function Home() {
         <a href="/reportes" className="inline-flex items-center justify-center rounded-full border bg-transparent text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 text-slate-300 border-slate-500 hover:bg-slate-800 hover:border-slate-800 cursor-pointer font-semibold bg-primary hover:text-white">
           Reportes
         </a>
+        <a href="/punteo" className="inline-flex items-center justify-center rounded-full border bg-transparent text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 text-slate-300 border-slate-500 hover:bg-slate-800 hover:border-slate-800 cursor-pointer font-semibold bg-primary hover:text-white">
+          Punteo
+        </a>
         </div>
       </section>
     </main>

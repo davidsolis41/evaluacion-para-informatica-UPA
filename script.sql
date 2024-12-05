@@ -39,8 +39,7 @@ VALUES
 CREATE TABLE punteo_usuario (
   id INT AUTO_INCREMENT PRIMARY KEY,
   idUsuario INT,
-  punteo INT NOT NULL
-
+  punteo INT,
   CONSTRAINT FK_IDUsuario FOREIGN KEY (idUsuario) REFERENCES Usuario(id)
     ON DELETE SET NULL
     ON UPDATE CASCADE
