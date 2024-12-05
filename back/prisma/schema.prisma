@@ -18,6 +18,7 @@ model Usuario {
   estadoUsuarioId Int
 
   estado EstadoUsuario? @relation(name: "EstadoAUsuario", fields: [estadoUsuarioId], references: [id])
+  punteo punteo_usuario[] @relation(name: "PunteoAUsuario")
 }
 
 // Tabla EstadoUsuario
@@ -27,4 +28,13 @@ model EstadoUsuario {
   clave String
 
   usuario Usuario[] @relation(name: "EstadoAUsuario")
+}
+
+// Tabla Punteo
+model punteo_usuario {
+  id Int @id @default(autoincrement())
+  idUsuario Int
+  punteo Int
+
+  usuario Usuario? @relation(name: "PunteoAUsuario", fields: [idUsuario], references: [id])
 }

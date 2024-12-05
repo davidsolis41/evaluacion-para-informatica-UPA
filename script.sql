@@ -35,3 +35,13 @@ VALUES
 ('Usuario2', '2024-11-29', 13245867, 'usuario2@gmail.com', '2024-11-29', 1),
 ('Usuario3', '2024-10-29', 87562314, 'usuario3@gmail.com', '2024-10-29', 2),
 ('Usuario4', '2024-10-29', 74514358, 'usuario4@gmail.com', '2024-10-29', 2);
+
+CREATE TABLE punteo_usuario (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  idUsuario INT,
+  punteo INT NOT NULL
+
+  CONSTRAINT FK_IDUsuario FOREIGN KEY (idUsuario) REFERENCES Usuario(id)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+);
